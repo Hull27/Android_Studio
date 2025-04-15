@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Praktikum_App1</string>
+    <string name="title_activity_login">Leanback LoginActivity</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+
+    <!-- Error messages -->
+    <string name="error_fragment_message">An error occurred</string>
+    <string name="dismiss_error">Dismiss</string>
 </resources>
