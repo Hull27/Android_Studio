@@ -1,47 +1,44 @@
-package com.example.praktikum_app1
+package com.example.praktikum_app1;
 
+
+import android.annotation.SuppressLint
 import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.praktikum_app1.ui.theme.Praktikum_App1Theme
+import android.widget.Button
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import com.example.praktikum_app1.R
+import java.text.SimpleDateFormat
+import java.util.*
 
-class MainActivity : ComponentActivity() {
+class MainActivity : AppCompatActivity() {
+
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-            Praktikum_App1Theme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Fatihul Faqih Hudzayfah",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
-            }
+        setContentView(R.layout.activity_main)
+
+        val textGreeting = findViewById<TextView>(R.id.textGreeting)
+        val textDate = findViewById<TextView>(R.id.textDate)
+        val textNextMeal = findViewById<TextView>(R.id.textNextMeal)
+        val btnGantiMenu = findViewById<Button>(R.id.btnGantiMenu)
+
+        // Ambil nama dari intent (opsional)
+        val userName = intent.getStringExtra("USERNAME") ?: "User"
+        textGreeting.text = "Hai, $userName!"
+
+        // Tanggal hari ini
+        val currentDate = SimpleDateFormat("EEEE, dd MMMM yyyy", Locale("id", "ID"))
+            .format(Date())
+        textDate.text = "Hari ini: $currentDate"
+
+        // Simulasi next meal
+        textNextMeal.text = "Jadwal makan berikutnya: 18.00"
+
+        // Tombol ganti menu
+        btnGantiMenu.setOnClickListener {
+            // Ganti menu secara acak (dummy)
+            val menuText = findViewById<TextView>(R.id.textMenu)
+            menuText.text = "- Salad Tuna + Roti Gandum\n- 430 Kalori | 28g Protein"
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    Praktikum_App1Theme {
-        Greeting("Android")
     }
 }

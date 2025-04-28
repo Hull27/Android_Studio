@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Praktikum_App1</string>
+    <string name="app_name">Kucing Peduli</string>
     <string name="title_activity_login">Leanback LoginActivity</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
